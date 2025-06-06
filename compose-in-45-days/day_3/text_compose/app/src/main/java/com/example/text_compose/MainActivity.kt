@@ -10,6 +10,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,6 +19,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -25,18 +29,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.text_compose.ui.theme.Text_composeTheme
-import kotlin.coroutines.jvm.internal.CompletedContinuation.context
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -157,42 +162,114 @@ fun AnnotedTextTask(){
 
 //Add a “Terms & Conditions” link at the bottom.
 @Composable
-fun ClickableTextTask(){
-        Box(
-            modifier = Modifier
-                .fillMaxSize(),
-            contentAlignment = Alignment.Center
-        ){
-            Text(
-                "Terms & Conditions",
+fun ClickableTextTask() {
+    val context = LocalContext.current
+
+    val annotatedText = buildAnnotatedString {
+        append("By signing up, you agree to our ")
+
+        withStyle(
+            style = SpanStyle(
                 color = Color.Blue,
-                fontSize = 14.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .clickable {
-                        val intent = Intent(Intent.ACTION_VIEW).apply {
-                            data = Uri.parse("https://your-link.com/terms")
-                            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                        }
-
-                        try {
-                            context.startActivity(intent)
-                        } catch (e: ActivityNotFoundException) {
-                            Toast.makeText(context, "No browser found to open link", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
+                fontWeight = FontWeight.Bold,
+                textDecoration = TextDecoration.Underline
             )
+        ) {
+            append("Terms & Conditions")
         }
+    }
+
+
+    Box (
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ){
+        Text(
+            text = annotatedText,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp)
+                .clickable {
+                    // Open Google when clicked
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"))
+                    context.startActivity(intent)
+                }
+        )
+    }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
+// Display Terms & Conditions as scrollable content.
+@Composable
+fun ScrollableTextTask(){
+    val scrollState = rememberScrollState()
+
+    Column(
+        modifier = Modifier.fillMaxSize()
+            .padding(16.dp)
+            .verticalScroll(scrollState)
+
+    ) {
+        Text(
+            text = """
+                 Terms & Conditions
+
+                1. Introduction
+                Welcome to our app. By using our app, you agree to these Terms & Conditions.
+
+                2. Use License
+                Permission is granted to temporarily download one copy of the materials for personal, non-commercial use only.
+
+                3. Disclaimer
+                The materials are provided "as is". We make no warranties.
+
+                4. Limitations
+                In no event shall we be liable for damages.
+
+                5. Revisions
+                We may revise the terms at any time without notice.
+
+                6. Governing Law
+                These terms are governed by the laws of the respective country.
+   1. Introduction
+                Welcome to our app. By using our app, you agree to these Terms & Conditions.
+
+                2. Use License
+                Permission is granted to temporarily download one copy of the materials for personal, non-commercial use only.
+
+                3. Disclaimer
+                The materials are provided "as is". We make no warranties.
+
+                4. Limitations
+                In no event shall we be liable for damages.
+
+                5. Revisions
+                We may revise the terms at any time without notice.
+
+                6. Governing Law
+                These terms are governed by the laws of the respective country.
+
+                ...
+
+                (Add more detailed content here to make it scrollable.)
+            """.trimIndent(),
+            style = MaterialTheme.typography.bodyMedium
+        )
+    }
+}
+
+
+
+
+
+@Preview(showSystemUi = true)
+@Composable
+fun GreetingPreview() {
 ////    SimpleText()
 ////    SimpleTextTask()
 ////    StyledText()
 ////    StyledTextTask()
 //    AnnotedTextTask()
-//}
+//ClickableTextTask()
+
+    ScrollableTextTask()
+}
