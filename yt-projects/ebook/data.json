@@ -1,0 +1,66 @@
+{
+  "Books": {
+    "234561": {
+      "bookName": "The Alchemist",
+      "bookAuthor": "Paulo Coelho",
+      "bookUrl": "https://www.pexels.com/photo/book-open-on-a-bed-1148399/",
+      "bookDescription": "A journey of self-discovery and destiny.",
+      "category": "Fiction",
+      "image": "https://images.pexels.com/photos/1148399/pexels-photo-1148399.jpeg"
+    },
+    "234562": {
+      "bookName": "Atomic Habits",
+      "bookAuthor": "James Clear",
+      "bookUrl": "https://www.pexels.com/photo/close-up-photo-of-books-1005324/",
+      "bookDescription": "An easy & proven way to build good habits.",
+      "category": "Self-help",
+      "image": "https://images.pexels.com/photos/1005324/pexels-photo-1005324.jpeg"
+    },
+    "234563": {
+      "bookName": "1984",
+      "bookAuthor": "George Orwell",
+      "bookUrl": "https://www.pexels.com/photo/person-reading-a-book-on-brown-wooden-table-4861352/",
+      "bookDescription": "A dystopian novel about totalitarian regime.",
+      "category": "Science Fiction",
+      "image": "https://images.pexels.com/photos/4861352/pexels-photo-4861352.jpeg"
+    },
+    "234564": {
+      "bookName": "Think and Grow Rich",
+      "bookAuthor": "Napoleon Hill",
+      "bookUrl": "https://www.pexels.com/photo/a-person-holding-a-book-3755761/",
+      "bookDescription": "A classic book on wealth and success.",
+      "category": "Motivation",
+      "image": "https://images.pexels.com/photos/3755761/pexels-photo-3755761.jpeg"
+    },
+    "234565": {
+      "bookName": "Rich Dad Poor Dad",
+      "bookAuthor": "Robert Kiyosaki",
+      "bookUrl": "https://www.pexels.com/photo/photo-of-books-2675866/",
+      "bookDescription": "What the rich teach their kids about money.",
+      "category": "Finance",
+      "image": "https://images.pexels.com/photos/2675866/pexels-photo-2675866.jpeg"
+    }
+  },
+  "BooksCategory": {
+    "543271": {
+      "name": "Fiction",
+      "categoryImageUrl": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c"
+    },
+    "543272": {
+      "name": "Self-help",
+      "categoryImageUrl": "https://images.unsplash.com/photo-1519681393784-d120267933ba"
+    },
+    "543273": {
+      "name": "Science Fiction",
+      "categoryImageUrl": "https://images.unsplash.com/photo-1541963463532-d68292c34b19"
+    },
+    "543274": {
+      "name": "Motivation",
+      "categoryImageUrl": "https://images.unsplash.com/photo-1531297484001-80022131f5a1"
+    },
+    "543275": {
+      "name": "Finance",
+      "categoryImageUrl": "https://images.unsplash.com/photo-1581090700227-1e8a44c1f0a4"
+    }
+  }
+}
