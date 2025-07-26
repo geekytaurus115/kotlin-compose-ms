@@ -79,7 +79,7 @@ fun MainScreen(modifier: Modifier){
 
         NavGraph(
             navHostController = navHostController,
-            modifier = Modifier.padding()
+            modifier = modifier
         )
 
     }
